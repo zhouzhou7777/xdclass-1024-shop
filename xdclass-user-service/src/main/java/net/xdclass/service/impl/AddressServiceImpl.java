@@ -1,5 +1,6 @@
 package net.xdclass.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import net.xdclass.model.AddressDO;
 import net.xdclass.mapper.AddressMapper;
 import net.xdclass.service.AddressService;
@@ -17,4 +18,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class AddressServiceImpl extends ServiceImpl<AddressMapper, AddressDO> implements AddressService {
 
+    @Override
+    public AddressDO detail(Long id) {
+        return baseMapper.selectOne(new QueryWrapper<AddressDO>().eq("id",id));
+    }
 }
